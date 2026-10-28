@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShaRlpSMP — Minecraft Java SMP</title>
+<meta name="description" content="ShaRlpSMP — Minecraft Java SMP-сервер. Привілеї, кіти та товари. Покупки через Discord.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⛏️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e0c;--p:#111a15;--p2:#18251e;--line:#27402f;--t:#e9f2ec;--m:#8fa698;--g:#3ee08a;--gold:#ffcc3d;--red:#ff5a5a;--dc:#5865f2;--r:3px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;color:var(--t);font:16px/1.6 Rubik,system-ui,sans-serif;background:var(--bg)}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:
+ linear-gradient(#0a0e0c00,#0a0e0c 75%),
+ linear-gradient(90deg,#ffffff07 1px,transparent 1px) 0 0/48px 48px,
+ linear-gradient(#ffffff07 1px,transparent 1px) 0 0/48px 48px,
+ radial-gradient(900px 420px at 70% -80px,#1f5a3a,transparent 70%)}
+h1,h2,h3,.brand{font-family:'Press Start 2P',monospace;line-height:1.55;margin:0 0 .7em;font-weight:400}
+h1{font-size:clamp(1.6rem,7vw,3.4rem);text-shadow:4px 4px 0 #14402a,8px 8px 0 #0a0e0c}
+h2{font-size:clamp(.95rem,3.4vw,1.3rem);margin-top:2.2rem}h3{font-size:.78rem}
+a{color:var(--g)}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:.65rem 1.2rem;background:#0a0e0cf0;border-bottom:3px solid var(--line)}
+.brand{font-size:.8rem;color:var(--g);text-decoration:none;margin:0}
+nav{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap}
+nav a{color:var(--t);text-decoration:none;font-size:.95rem;padding:.2rem 0;border-bottom:2px solid transparent}
+nav a:hover,nav a.on{color:var(--g);border-color:var(--g)}
+.cl b{background:var(--gold);color:#000;padding:0 .4rem;border-radius:var(--r);font-size:.8rem}
+#bg{display:none;background:var(--p2);border:2px solid var(--line);color:var(--t);font-size:1.2rem;padding:.1rem .6rem;border-radius:var(--r)}
+main{max-width:1100px;margin:0 auto;padding:1.5rem 1.2rem 3rem;outline:0}
+.hero{display:grid;grid-template-columns:1.3fr 1fr;gap:2rem;align-items:center;padding:2.5rem 0 1rem}
+.hero p{color:var(--m);font-size:1.1rem;max-width:34rem}
+.panel{background:var(--p);border:2px solid var(--line);border-top:6px solid var(--g);border-radius:var(--r);padding:1.2rem}
+.ip{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;background:#070a08;border:2px solid var(--line);padding:.6rem;border-radius:var(--r);margin:.6rem 0 1rem}
+.ip code{color:var(--g);font:1rem 'Courier New',monospace;word-break:break-all;flex:1}
+.btn{display:inline-block;cursor:pointer;border:2px solid #000;border-bottom-width:5px;background:var(--g);color:#052612;font:700 .95rem Rubik,sans-serif;padding:.55rem 1.1rem;border-radius:var(--r);text-decoration:none;transition:filter .15s,box-shadow .2s}
+.btn:hover{filter:brightness(1.1);box-shadow:0 0 20px #3ee08a66}.btn:active{border-bottom-width:2px;transform:translateY(3px)}
+.btn.dc{background:var(--dc);color:#fff}.btn.dc:hover{box-shadow:0 0 20px #5865f299}
+.btn.gh{background:var(--p2);color:var(--t);border-color:var(--line)}.btn.sm{padding:.25rem .7rem;font-size:.85rem;border-bottom-width:3px}
+.row{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center}.stack{display:grid;gap:.8rem}
+.st{display:flex;gap:.6rem;align-items:center;color:var(--m)}
+.dot{width:11px;height:11px;border-radius:2px;background:#666}.dot.on{background:var(--g);box-shadow:0 0 10px var(--g)}.dot.off{background:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.card{background:var(--p);border:2px solid var(--line);border-radius:var(--r);padding:1rem;display:flex;flex-direction:column;gap:.55rem;position:relative;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--g);transform:translateY(-3px)}
+.pic{height:120px;display:grid;place-items:center;background:var(--p2);border-radius:var(--r);font-size:3.4rem;overflow:hidden}.pic img{width:100%;height:100%;object-fit:cover}
+.tag{position:absolute;top:.6rem;right:.6rem;background:var(--gold);color:#000;font:700 .7rem Rubik;padding:.1rem .5rem;border-radius:var(--r)}
+.card ul{margin:0;padding-left:1.1rem;color:var(--m);font-size:.92rem;flex:1}.card p{margin:0;color:var(--m)}
+.price{font-weight:700;color:var(--gold);font-size:1.15rem}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin:1rem 0}.tabs .btn{background:var(--p2);color:var(--t);border-color:var(--line)}.tabs .btn.on{background:var(--g);color:#052612;border-color:#000}
+.box{background:var(--p);border:2px solid var(--line);border-radius:var(--r);padding:1.2rem;margin:1rem 0;overflow-x:auto}
+.note{border-left:4px solid var(--gold);background:#ffcc3d14;padding:.8rem 1rem;border-radius:var(--r);margin:1rem 0;color:#efe2b2}
+.steps{counter-reset:s;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;padding:0;list-style:none}
+.steps li{counter-increment:s;background:var(--p);border:2px solid var(--line);padding:1rem;border-radius:var(--r)}
+.steps li::before{content:counter(s);display:grid;place-items:center;width:2rem;height:2rem;background:var(--g);color:#052612;font:.7rem 'Press Start 2P';margin-bottom:.5rem;border-radius:var(--r)}
+table{width:100%;border-collapse:collapse}td{padding:.6rem;border-bottom:1px solid var(--line);vertical-align:middle}
+input{width:100%;background:#070a08;border:2px solid var(--line);color:var(--t);padding:.6rem;border-radius:var(--r);font:inherit}
+label{display:block;margin:.9rem 0 .3rem;color:var(--m);font-size:.9rem}
+input:focus,.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+time{color:var(--m);font-size:.85rem}
+#toast{position:fixed;left:50%;bottom:1.3rem;transform:translate(-50%,200%);background:var(--p2);border:2px solid var(--g);padding:.7rem 1.2rem;border-radius:var(--r);transition:transform .3s;z-index:50;max-width:92vw}#toast.show{transform:translate(-50%,0)}
+footer{text-align:center;color:var(--m);font-size:.85rem;padding:2rem 1rem}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:1rem}#bg{display:block}nav{display:none;position:absolute;top:100%;left:0;right:0;background:#0a0e0c;flex-direction:column;align-items:flex-start;padding:1rem 1.2rem;border-bottom:3px solid var(--line)}nav.open{display:flex}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="top"><a class="brand" href="#/">⛏ ShaRlpSMP</a><button id="bg" aria-label="Меню">☰</button>
+<nav id="nav"><a href="#/">Головна</a><a href="#/shop">Магазин</a><a href="#/news">Новини</a><a href="#/rules">Правила</a><a href="#/support">Підтримка</a><a href="#/contacts">Контакти</a><a class="cl" href="#/cart">Кошик <b id="cc">0</b></a></nav></header>
+<main id="app" tabindex="-1"></main>
+<footer>© ShaRlpSMP · Сайт не є продуктом Mojang чи Microsoft.</footer>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ РЕДАГУЙТЕ ТІЛЬКИ ЦЕЙ БЛОК ============ */
+const S={
+ name:"ShaRlpSMP", ip:"sharlpSmp.aternos.me", discord:"https://discord.gg/sharlpsmp",
+ discordNick:"artem4340036", currency:"грн",
+ description:"Java SMP для тих, хто любить будувати, досліджувати та грати з друзями.",
+ advantages:[
+  {i:"🌍",t:"Java SMP",d:"Класичне виживання на Minecraft Java Edition."},
+  {i:"🤝",t:"Дружня спільнота",d:"Активний Discord, допомога новачкам."},
+  {i:"🛡",t:"Чесні правила",d:"Модерація та однакові правила для всіх."},
+  {i:"🎁",t:"Зрозумілі покупки",d:"Купівля напряму в Discord, без посередників."}],
+ // price:null → «Ціну уточнюйте». popular:true → на головній. image:"посилання" (не обов'язково)
+ products:[
+  {id:"imperor",cat:"donat",name:"Імператор",icon:"👑",image:"",price:null,popular:true,desc:"Привілей найвищого рівня.",perks:["Додайте переваги тут"]},
+  {id:"knyaz",cat:"donat",name:"Князь",icon:"🛡",image:"",price:null,popular:true,desc:"Привілей для активних гравців.",perks:["Додайте переваги тут"]},
+  {id:"kit1",cat:"kit",name:"Приклад кіта",icon:"🎒",image:"",price:null,popular:false,desc:"Змініть або видаліть.",perks:["Вміст кіта"]},
+  {id:"oth1",cat:"other",name:"Приклад товару",icon:"✨",image:"",price:null,popular:false,desc:"Змініть або видаліть.",perks:["Опис"]}],
+ categories:[{id:"donat",name:"Донати"},{id:"kit",name:"Кіти"},{id:"other",name:"Інші товари"}],
+ promos:[/* {code:"WELCOME",percent:10} */],
+ news:[{date:"2026-10-28",title:"Новий сайт ShaRlpSMP",text:"Запустили сайт із магазином. Покупки відбуваються через Discord."}],
+ rules:["Поважайте інших гравців. Образи й дискримінація заборонені.","Чити, X-ray та експлойти заборонені.","Не руйнуйте й не грабуйте чужі будівлі без дозволу.","Не рекламуйте інші сервери.","Рішення адміністрації остаточні. Спірні питання — у Discord."],
+ support:"Є питання щодо покупки чи проблема на сервері? Напишіть у Discord — відповімо якнайшвидше.",
+ contacts:"Discord-сервер: discord.gg/sharlpsmp. Власник: artem4340036 (Discord)."
+};
+/* ============ КІНЕЦЬ БЛОКУ ============ */
+
+const $=s=>document.querySelector(s),app=$('#app');
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ls={get(k,d){try{return JSON.parse(localStorage.getItem(k))??d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}}};
+let cart=ls.get('sh_cart',{}),promo=ls.get('sh_promo',null),cat='all';
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),2800)};
+const prod=id=>S.products.find(p=>p.id===id),price=p=>p.price==null?'Ціну уточнюйте':p.price+' '+S.currency;
+const save=()=>{ls.set('sh_cart',cart);$('#cc').textContent=Object.values(cart).reduce((a,b)=>a+b,0)};
+const copy=async t=>{try{await navigator.clipboard.writeText(t);return true}catch{const a=document.createElement('textarea');a.value=t;document.body.append(a);a.select();let ok=false;try{ok=document.execCommand('copy')}catch{}a.remove();return ok}};
+const card=p=>`<article class="card">${p.popular?'<span class="tag">Хіт</span>':''}<div class="pic">${p.image?`<img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">`:esc(p.icon||'📦')}</div><h3>${esc(p.name)}</h3><p>${esc(p.desc)}</p><ul>${p.perks.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="price">${price(p)}</div><button class="btn" data-add="${esc(p.id)}">Додати в кошик</button></article>`;
+const totals=()=>{let sum=0,unk=false;for(const[id,q]of Object.entries(cart)){const p=prod(id);if(!p)continue;p.price==null?unk=true:sum+=p.price*q}const pc=promo&&S.promos.find(x=>x.code===promo),disc=pc?Math.round(sum*pc.percent)/100:0;return{sum,unk,disc,pc,total:sum-disc}};
+const orderText=(mc,dn)=>{const t=totals();return `Привіт! Хочу купити на ${S.name}:\n`+Object.entries(cart).map(([id,q])=>{const p=prod(id);return p?`• ${p.name} × ${q} — ${p.price==null?'ціна уточнюється':p.price*q+' '+S.currency}`:''}).filter(Boolean).join('\n')+`\nСума: ${t.total} ${S.currency}${t.unk?' (+ товари з уточненням ціни)':''}${t.pc?`\nПромокод: ${promo} (−${t.pc.percent}%)`:''}\nНік у Minecraft: ${mc}\nМій Discord: ${dn}`};
+const V={
+home(){const pop=S.products.filter(p=>p.popular);return `<section class="hero"><div><h1>${esc(S.name)}</h1><p>${esc(S.description)}</p><div class="row"><a class="btn" href="#/shop">До магазину</a><a class="btn dc" href="${esc(S.discord)}" target="_blank" rel="noopener">Discord</a></div></div>
+<div class="panel"><h3>Як зайти</h3><p style="margin:0;color:var(--m)">Minecraft Java Edition</p><div class="ip"><code>${esc(S.ip)}</code><button class="btn sm" id="cip">Копіювати IP</button></div><div class="st" id="on"><i class="dot"></i>Перевіряємо статус…</div></div></section>
+${pop.length?`<h2>Популярні донати</h2><div class="grid">${pop.map(card).join('')}</div>`:''}
+<h2>Переваги сервера</h2><div class="grid">${S.advantages.map(a=>`<div class="card"><div style="font-size:2rem">${a.i}</div><h3>${esc(a.t)}</h3><p>${esc(a.d)}</p></div>`).join('')}</div>
+<h2>Як купити</h2><ol class="steps"><li><b>Оберіть товар</b><br><span style="color:var(--m)">Додайте його в кошик у магазині.</span></li><li><b>Оформіть замовлення</b><br><span style="color:var(--m)">Вкажіть нік Minecraft і Discord.</span></li><li><b>Напишіть у Discord</b><br><span style="color:var(--m)">Надішліть текст замовлення ${esc(S.discordNick)}.</span></li><li><b>Отримайте товар</b><br><span style="color:var(--m)">Оплату й видачу підтверджує власник.</span></li></ol>`},
+shop(){const l=S.products.filter(p=>cat==='all'||p.cat===cat);return `<h2>Магазин</h2><div class="tabs">${[{id:'all',name:'Усе'},...S.categories].map(c=>`<button class="btn ${c.id===cat?'on':''}" data-cat="${esc(c.id)}">${esc(c.name)}</button>`).join('')}</div><div class="grid">${l.map(card).join('')||'<p>У цій категорії поки немає товарів.</p>'}</div><div class="note">Оплата й видача відбуваються в Discord: оформіть замовлення тут і напишіть ${esc(S.discordNick)}.</div>`},
+cart(){const ids=Object.keys(cart).filter(prod);if(!ids.length)return `<h2>Кошик</h2><div class="box">Кошик порожній. <a href="#/shop">Перейти до магазину</a></div>`;const t=totals();
+return `<h2>Кошик</h2><div class="box"><table>${ids.map(id=>{const p=prod(id);return `<tr><td>${esc(p.name)}</td><td>${price(p)}</td><td><button class="btn sm gh" data-dec="${esc(id)}">−</button> ${cart[id]} <button class="btn sm gh" data-add="${esc(id)}">+</button></td><td><button class="btn sm gh" data-del="${esc(id)}">Видалити</button></td></tr>`}).join('')}</table>
+<label for="pc">Промокод</label><div class="row"><input id="pc" style="max-width:220px" value="${esc(promo||'')}"><button class="btn sm" id="apc">Застосувати</button></div>
+<p>Сума: ${t.sum} ${S.currency}${t.disc?` · Знижка: −${t.disc} ${S.currency}`:''}</p><p class="price">Разом: ${t.total} ${S.currency}${t.unk?' + товари з уточненням ціни':''}</p><a class="btn" href="#/checkout">Оформити замовлення</a></div>`},
+checkout(){if(!Object.keys(cart).filter(prod).length){location.hash='#/cart';return''}return `<h2>Оформлення замовлення</h2><div class="box"><label for="mc">Нік у Minecraft</label><input id="mc" maxlength="16" placeholder="Steve" autocomplete="off"><label for="dn">Ваш нік у Discord</label><input id="dn" maxlength="40" autocomplete="off"><p class="note">Сайт не приймає платежі. Натисніть кнопку: текст замовлення скопіюється й відкриється Discord. Надішліть його користувачу <b>${esc(S.discordNick)}</b> і домовтеся там про оплату та видачу.</p><button class="btn dc" id="send">Скопіювати замовлення й відкрити Discord</button></div><div id="out"></div>`},
+orders(){const o=ls.get('sh_orders',[]);return `<h2>Мої замовлення</h2><p class="note">Список зберігається лише в цьому браузері. Оплату та видачу підтверджує власник у Discord.</p>${o.length?`<div class="box"><table>${o.map(x=>`<tr><td>${esc(x.date)}</td><td><pre style="margin:0;white-space:pre-wrap;font:inherit">${esc(x.text)}</pre></td><td>Надіслано в Discord</td></tr>`).join('')}</table></div>`:'<div class="box">Замовлень ще немає.</div>'}`},
+news(){return `<h2>Новини</h2>${S.news.map(n=>`<article class="box"><time>${esc(n.date)}</time><h3 style="margin-top:.5rem">${esc(n.title)}</h3><p style="margin:0">${esc(n.text)}</p></article>`).join('')}`},
+rules(){return `<h2>Правила</h2><div class="box"><ol>${S.rules.map(r=>`<li>${esc(r)}</li>`).join('')}</ol></div>`},
+support(){return `<h2>Підтримка</h2><div class="box"><p>${esc(S.support)}</p><a class="btn dc" href="${esc(S.discord)}" target="_blank" rel="noopener">Відкрити Discord</a></div>`},
+contacts(){return `<h2>Контакти</h2><div class="box"><p>${esc(S.contacts)}</p><p>IP: <code>${esc(S.ip)}</code></p><div class="row"><a class="btn dc" href="${esc(S.discord)}" target="_blank" rel="noopener">Discord</a><a class="btn gh" href="#/orders">Мої замовлення</a></div></div>`}};
+async function online(){const el=$('#on');if(!el)return;try{const d=await(await fetch('https://api.mcsrvstat.us/3/'+encodeURIComponent(S.ip))).json();el.innerHTML=d.online?`<i class="dot on"></i>Онлайн: ${d.players?.online??0}/${d.players?.max??'?'}`:'<i class="dot off"></i>Сервер вимкнений (Aternos вмикається вручну)'}catch{el.innerHTML='<i class="dot"></i>Статус недоступний'}}
+function render(){const r=(location.hash.replace('#/','')||'home').split('?')[0];app.innerHTML=(V[r]||V.home)();document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#/'+(r==='home'?'':r)));$('#nav').classList.remove('open');scrollTo(0,0);if(r==='home')online()}
+document.addEventListener('click',async e=>{const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+if(b.id==='bg')return $('#nav').classList.toggle('open');
+if(d.add){cart[d.add]=(cart[d.add]||0)+1;save();toast('Додано в кошик');if(location.hash==='#/cart')render()}
+else if(d.dec){if(--cart[d.dec]<=0)delete cart[d.dec];save();render()}
+else if(d.del){delete cart[d.del];save();render()}
+else if(d.cat){cat=d.cat;render()}
+else if(b.id==='cip')toast(await copy(S.ip)?'IP скопійовано: '+S.ip:'Не вдалося скопіювати — виділіть IP вручну');
+else if(b.id==='apc'){const c=$('#pc').value.trim().toUpperCase();if(c&&S.promos.some(x=>x.code===c)){promo=c;toast('Промокод застосовано')}else{promo=null;toast(c?'Такого промокоду немає':'Промокод прибрано')}ls.set('sh_promo',promo);render()}
+else if(b.id==='send'){const mc=$('#mc').value.trim(),dn=$('#dn').value.trim();if(!/^[A-Za-z0-9_]{3,16}$/.test(mc))return toast('Нік Minecraft: 3–16 символів, латиниця, цифри або _');if(dn.length<2)return toast('Вкажіть свій нік у Discord');
+const text=orderText(mc,dn),ok=await copy(text),o=ls.get('sh_orders',[]);o.unshift({date:new Date().toLocaleString('uk-UA'),text});ls.set('sh_orders',o.slice(0,30));
+$('#out').innerHTML=`<div class="box"><p>${ok?'Текст замовлення скопійовано.':'Скопіюйте текст нижче вручну.'} Надішліть його користувачу <b>${esc(S.discordNick)}</b> у Discord. Це ще не оплата.</p><pre style="white-space:pre-wrap">${esc(text)}</pre><a class="btn dc" href="${esc(S.discord)}" target="_blank" rel="noopener">Відкрити Discord</a></div>`;cart={};save()}});
+addEventListener('hashchange',render);save();render();
+</script>
+</body>
+</html>
